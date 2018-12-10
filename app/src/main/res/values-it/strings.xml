@@ -2,10 +2,8 @@
     <string name="app_name">My Application</string>
     <string name="button">POLPO</string>
     <string name="ciao">PAUL</string>
-    <string name="tutto">buono</string>
+    <string translatable ="false" name="tutto">buono</string>
     <string name="ook">inpadella</string>
     <string name="nono">0</string>
     <string name="newButton">newButton</string>
-    <string name="login_error">error in login</string>
-    <string name="login_success">login succesfull</string>
 </resources>
