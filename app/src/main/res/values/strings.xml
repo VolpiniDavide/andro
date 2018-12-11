@@ -8,4 +8,5 @@
     <string name="newButton">newButton</string>
     <string name="login_error">error in login</string>
     <string name="login_success">login succesfull</string>
+    <string name="welcome">welcome :  </string>
 </resources>
