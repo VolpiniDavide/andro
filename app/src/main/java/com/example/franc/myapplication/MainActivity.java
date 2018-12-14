@@ -2,6 +2,8 @@ package com.example.franc.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -31,6 +33,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     Switch switchPul;
     LinearLayout mainCont;
     Utente ute;
+    public boolean luce;
+
+    SharedPreferences prefs;
+
 
 
     private boolean isValidEmail(){
@@ -81,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             passwordET.setTextColor(getResources().getColor(R.color.display));
             passwordET.setHintTextColor(getResources().getColor(R.color.display));
             switchPul.setBackgroundColor(getResources().getColor(R.color.dark));
-        } else if ( !switchPul.isChecked()){
+        } else if ( !switchPul.isChecked() ){
             mainCont.setBackgroundColor(getResources().getColor(R.color.display));
             emailET.setTextColor(getResources().getColor(R.color.dark));
             emailET.setHintTextColor(getResources().getColor(R.color.dark));
@@ -110,11 +116,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         emailET.getText();
         passwordET.getText();
 
-        Utente ut = new Utente();
-        ute=ut;
+
+        prefs = getPreferences(Context.MODE_PRIVATE);
+
+        switchPul.setChecked( prefs.getBoolean("switchPul", false) );
+        cambiaCol();
 
 
         Log.i(TAG, "activity created");
+
+
 
 
         emailET.addTextChangedListener(new TextWatcher() {
@@ -189,16 +200,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         Log.i(TAG, "activity destroyed");
     }
 
+
+
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.login_btn) {
             if (!isValidEmail() || !isValidPassword())
                 showErrorMessage("login");
-            //else if (ute.trovaUtente(this.emailET.toString())){
-              //  showSuccessMessage("login");
-                //welcome(this.loginBtn);
-            //else showErrorMessage("non existing user");
-             //            }
             else showSuccessMessage("login");
             welcome(this.loginBtn);
             }
@@ -207,10 +216,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             faiRegist(this.registerBtn);
         }
 
-        else if (view.getId() == R.id.simpleSwitch){
-            cambiaCol();
-        }
+        else if (view.getId() == R.id.simpleSwitch) {
+            if (!luce) {
+                prefs.edit().putBoolean("switchPul", switchPul.isChecked()).apply();
+                luce=true;
+                cambiaCol();
+            } else {
+                prefs.edit().putBoolean("switchPul", switchPul.isChecked()).apply();
+                luce=false;
+                cambiaCol();
+            }
 
+        }
 
     }
 

@@ -2,6 +2,7 @@ package com.example.franc.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
         String mail;
+        String faimail;
+
 
         public void mailSend(){
 
@@ -25,6 +28,9 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             emailIntent.putExtra(Intent.EXTRA_TEXT, "body text");
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
         }
+
+
+
 
 
 
@@ -40,6 +46,15 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         mail_passata.setText(mail);
 
         mail_passata.setOnClickListener(this);
+
+
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+
+        faimail = Uri.decode(intent.getData().toString().substring(7));
+
+        mail_passata.setText(faimail);
     }
 
 
