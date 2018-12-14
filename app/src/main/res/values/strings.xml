@@ -9,4 +9,6 @@
     <string name="login_error">error in login</string>
     <string name="login_success">login succesfull</string>
     <string name="welcome">welcome :  </string>
+    <string name="switchDark">darkmode</string>
+    <string name="milk">milk</string>
 </resources>

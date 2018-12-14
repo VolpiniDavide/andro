@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     Button registerBtn;
     Switch switchPul;
     LinearLayout mainCont;
-    Utente ute;
+    //Utente ute;
     public boolean luce;
 
     SharedPreferences prefs;
