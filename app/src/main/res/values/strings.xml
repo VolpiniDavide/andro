@@ -11,4 +11,14 @@
     <string name="welcome">welcome :  </string>
     <string name="switchDark">darkmode</string>
     <string name="milk">milk</string>
+    <string name="buy">buy</string>
+    <string name="milk_price">2,00€</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="bread">bread</string>
+    <string name="bread_price">1,0€</string>
+    <string name="tea">tea</string>
+    <string name="tea_price">2,50€</string>
+    <string name="total">total</string>
+    <string name="euro">€</string>
 </resources>

@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/header">
 
     <EditText
         android:layout_width="wrap_content"
@@ -24,41 +27,66 @@
         />
     </LinearLayout>
 
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:padding="5dp"
+        android:id="@+id/myrecyclerview">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        >
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true">
+
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/prodotto1">
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/milk"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/total"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/euro"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/tot"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/euro"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
-
-
-
-
-
-
-
-
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buy_btn"
+            android:textAlignment="center"
+            android:text="@string/buy"
+            />
 
     </LinearLayout>
-
-
-
-
-
-</LinearLayout>
+</RelativeLayout>

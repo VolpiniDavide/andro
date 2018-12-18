@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="clip_horizontal"
+    android:paddingTop="20dp"
+    android:stretchColumns="1"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_gravity="left"
+        android:textSize="20dp"
+        android:paddingEnd="90dp"
+        android:id="@+id/item_name"
+        android:text="@string/milk"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:paddingEnd="90dp"
+        android:id="@+id/prezzo"
+        android:text="@string/milk_price"
+        />
+
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:id="@+id/piu"
+        android:paddingEnd="30dp"
+        android:text="@string/plus" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="30dp"
+        android:id="@+id/quantita"
+        android:text="1"/>
+
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/meno"
+        android:text="@string/minus"/>
+
+</LinearLayout>
+</LinearLayout>
