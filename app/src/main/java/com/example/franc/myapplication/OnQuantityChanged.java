@@ -1,8 +1,10 @@
 package com.example.franc.myapplication;
 
-public interface OnItemChanged {
+public interface OnQuantityChanged {
 
-    public void onItemAdded ();
+    public void onItemAdded (float price);
 
-    public void onItemRemoved();
+    public void onItemRemoved(float price);
+
+
 }

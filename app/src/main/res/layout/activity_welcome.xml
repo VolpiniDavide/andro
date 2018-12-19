@@ -7,33 +7,34 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/header">
+
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="30dp"
+        android:textAlignment="textStart"
         android:id="@+id/welc"
         android:text="@string/welcome"
+        android:layout_above="@+id/myrecyclerview"
+        android:background="@color/colorAccent"
         />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/mail_passata"
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/mail_passata"
+        android:layout_toRightOf="@+id/welc"
+        android:textAlignment="center"
+        android:background="@color/cardview_dark_background"
         />
-    </LinearLayout>
 
 
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/header"
-        android:padding="5dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mail_passata"
+        android:layout_above="@+id/btmRel"
         android:id="@+id/myrecyclerview">
 
     </android.support.v7.widget.RecyclerView>
@@ -42,31 +43,28 @@
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="bottom"
-        android:layout_alignParentBottom="true">
 
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="horizontal">
+            android:layout_alignParentBottom="true"
+            android:id="@+id/btmRel">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:text="@string/total"
                 android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/total_string"
                 android:textSize="20dp" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:text="@string/euro"
+                android:layout_toRightOf="@+id/total_string"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text=""
                 android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/tot"
                 android:textSize="20dp" />
@@ -76,9 +74,20 @@
                 android:layout_height="30dp"
                 android:text="@string/euro"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="20dp" />
+                android:layout_toRightOf="@+id/tot"
+                android:textSize="20dp"
+                android:id="@+id/euro"/>
 
-        </LinearLayout>
+            <ProgressBar
+                android:layout_width="match_parent"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:max="5"
+                android:progress="3"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/euro"
+                android:id="@+id/progress_bar"/>
+
+
 
         <Button
             android:layout_width="match_parent"
@@ -86,7 +95,9 @@
             android:id="@+id/buy_btn"
             android:textAlignment="center"
             android:text="@string/buy"
+            android:enabled="false"
+            android:layout_below="@+id/progress_bar"
             />
+</RelativeLayout>
 
-    </LinearLayout>
 </RelativeLayout>

@@ -19,12 +19,32 @@ public class FoodListAdapter extends RecyclerView.Adapter {
 
 
     private LayoutInflater mInflater;
-    private ArrayList<Food> data;
+    private ArrayList<Food> data = new ArrayList<>();
+
+
+
+   public OnQuantityChanged onQuantityChange;
+
+    public void setOnQuantityChange(OnQuantityChanged onQuantityChange) {
+        this.onQuantityChange = onQuantityChange;
+    }
+
+
+
+
 
     public FoodListAdapter(Context context, ArrayList<Food> data) {
         this.data = data;
         mInflater = LayoutInflater.from(context);
     }
+
+    public FoodListAdapter(Context context) {
+
+        mInflater = LayoutInflater.from(context);
+    }
+
+
+
 
     @NonNull
     @Override
@@ -56,33 +76,6 @@ public class FoodListAdapter extends RecyclerView.Adapter {
         public Button plusBtn;
         public Button minusBtn;
 
-        public void plusButton(){
-
-            Integer newQuantity = (Integer.parseInt(productQuantity.getText().toString()));
-            newQuantity += 1;
-            productQuantity.setText(newQuantity.toString());
-
-            Double newPrice = (Double.parseDouble(productPrice.getText().toString()));
-            Double totEx = Double.parseDouble(WelcomeActivity.tot.getText().toString());
-            totEx += newPrice;
-            WelcomeActivity.tot.setText ( totEx.toString() );
-        }
-
-        public void minusButton(){
-
-            Integer newQuantity = (Integer.parseInt(productQuantity.getText().toString()));
-            if ( newQuantity >= 1){
-            newQuantity -= 1;
-            productQuantity.setText(newQuantity.toString());
-
-            Double newPrice = (Double.parseDouble(productPrice.getText().toString()));
-            Double totEx = Double.parseDouble(WelcomeActivity.tot.getText().toString());
-            totEx -= newPrice;
-            WelcomeActivity.tot.setText ( totEx.toString() );
-
-        }
-
-        }
 
 
 
@@ -99,20 +92,37 @@ public class FoodListAdapter extends RecyclerView.Adapter {
             plusBtn.setOnClickListener(this);
             minusBtn.setOnClickListener(this);
 
+
+
         }
 
 
         @Override
         public void onClick(View v) {
             if (v.getId() == plusBtn.getId()) {
-                plusButton();
+                //  plusButton();
+                Food food = data.get(getAdapterPosition());
+                food.increaseQuantity();
+                notifyItemChanged(getAdapterPosition());
+                onQuantityChange.onItemAdded(Float.parseFloat(food.getPrezzo()));
             }
 
             if (v.getId() == minusBtn.getId()) {
-                    minusButton();
+                //minusButton();
+                Food food = data.get(getAdapterPosition());
+                Integer qnt = Integer.parseInt(food.getQuantity());
+                if (qnt>0) {
+                    food.decreaseQuantity();
+                    onQuantityChange.onItemRemoved(Float.parseFloat(food.getPrezzo()));
+                    notifyItemChanged(getAdapterPosition());
+                }
             }
         }
 
 
     }
+
+
+
+
 }
