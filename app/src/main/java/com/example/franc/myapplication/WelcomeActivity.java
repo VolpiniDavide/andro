@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     TextView tot;
     float total;
     Button buy_btn;
+    int totForBar;
 
 
     public void mailSend() {
@@ -56,7 +58,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
     FoodListAdapter adapter;
-
+    ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,11 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         EditText mail_passata = findViewById(R.id.mail_passata);
         buy_btn = findViewById(R.id.buy_btn);
         tot = findViewById(R.id.tot);
+        progressBar = findViewById(R.id.progress_bar);
+
+
+        progressBar.setMax(5);
+        progressBar.setProgress(0);
 
         foodList.add(new Food("bread", "1", "0"));
         foodList.add(new Food("milk", "2", "0"));
@@ -194,6 +201,8 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         Float newQuantity = (Float.parseFloat(tot.getText().toString()));
         newQuantity += price;
         tot.setText(String.valueOf(newQuantity));
+        totForBar += price;
+        progressBar.setProgress(totForBar);
         if ( newQuantity >= 5)
             buy_btn.setEnabled(true);
     }
@@ -206,6 +215,8 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         if (newQuantity > 0.99) {
             newQuantity -= price;
             tot.setText(String.valueOf(newQuantity));
+            totForBar -= price;
+            progressBar.setProgress(totForBar);
             if ( newQuantity < 5)
                 buy_btn.setEnabled(false);
         }
