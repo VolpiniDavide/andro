@@ -40,7 +40,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     TextView tot;
     float total;
     Button buy_btn;
-    int totForBar;
+    float totForBar;
 
 
     public void mailSend() {
@@ -202,7 +202,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         newQuantity += price;
         tot.setText(String.valueOf(newQuantity));
         totForBar += price;
-        progressBar.setProgress(totForBar);
+        progressBar.setProgress((int)totForBar);
         if ( newQuantity >= 5)
             buy_btn.setEnabled(true);
     }
@@ -216,7 +216,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             newQuantity -= price;
             tot.setText(String.valueOf(newQuantity));
             totForBar -= price;
-            progressBar.setProgress(totForBar);
+            progressBar.setProgress((int)totForBar);
             if ( newQuantity < 5)
                 buy_btn.setEnabled(false);
         }
