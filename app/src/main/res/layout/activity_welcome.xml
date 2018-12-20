@@ -9,17 +9,18 @@
 
 
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:textAlignment="textStart"
         android:id="@+id/welc"
         android:text="@string/welcome"
+        android:textSize="20dp"
         android:layout_above="@+id/myrecyclerview"
         android:background="@color/colorAccent"
         />
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:id="@+id/mail_passata"

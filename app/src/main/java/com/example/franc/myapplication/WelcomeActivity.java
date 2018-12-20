@@ -65,7 +65,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        EditText mail_passata = findViewById(R.id.mail_passata);
+        TextView mail_passata = findViewById(R.id.mail_passata);
         buy_btn = findViewById(R.id.buy_btn);
         tot = findViewById(R.id.tot);
         progressBar = findViewById(R.id.progress_bar);
@@ -106,7 +106,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         if (intent.getData() != null)
             faimail = Uri.decode(intent.getData().toString().substring(7));
 
-        mail_passata.setText(faimail);
+        mail_passata.setText(mail);
 
 
         layoutManager = new LinearLayoutManager(this);
